@@ -5,11 +5,12 @@ public class playerControl : MonoBehaviour {
     private Rigidbody rb;
     public float speed;
     public Vector3 playerSize;
+
     // Use this for initialization
     void Start () {
         playerSize = GetComponent<Renderer>().bounds.size;
         rb = GetComponent<Rigidbody>();
-	}
+    }
 
     // Update is called once per frame
     void FixedUpdate () {
@@ -28,9 +29,8 @@ public class playerControl : MonoBehaviour {
             if (playerSize.x > other.bounds.size.x)
             {
                 other.gameObject.SetActive(false);
-                float vector = (other.bounds.size.x/playerSize.x)/10;
-                gameObject.transform.localScale += new Vector3(vector,vector,vector);
-                Debug.logger.Log("Log", playerSize.x);
+                float vector = (playerSize.x - other.bounds.size.x)/10;
+                gameObject.transform.localScale += new Vector3(vector, vector, vector);
             }
         }
     }
