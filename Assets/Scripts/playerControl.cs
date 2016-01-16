@@ -28,8 +28,10 @@ public class playerControl : MonoBehaviour {
             if (playerSize.x > other.bounds.size.x)
             {
                 other.gameObject.SetActive(false);
+                float vector = (playerSize.x - other.bounds.size.x)/10;
+                gameObject.transform.localScale += new Vector3(vector,vector,vector);
+                Debug.logger.Log("Log", playerSize.x);
             }
-            //other.gameObject.SetActive(false);
         }
     }
 }
